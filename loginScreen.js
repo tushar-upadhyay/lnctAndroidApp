@@ -66,9 +66,7 @@ export default class LoginScreen extends React.Component {
       this.setState({Name:res.Name,modalVisible:false}) 
       this.setData(this.state.Name,this.state.Username,this.state.Password,res.ImageUrl,res.College,res.Branch,res.Semester) 
       firebase.database().ref(this.state.Name).set({
-        token:token,
-        username:this.state.Username,
-        password:this.state.Password
+        token:token
   
       })
       this.props.navigation.navigate("Home",{

@@ -132,6 +132,7 @@ renderItem = ({item})=>{
   render(){
     return (
       <ScrollView>
+       
       <View style={{flex:1}}>
       <View style={{backgroundColor:'#00BFFF'}}>
         <View style={{marginLeft:10,marginTop:8}}>

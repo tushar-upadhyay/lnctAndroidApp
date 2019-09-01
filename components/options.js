@@ -1,31 +1,35 @@
 import React from "react"
 import {View,Text,AsyncStorage,Image,Alert,ActivityIndicator,StyleSheet,Linking,TouchableHighlight,Dimensions,Modal} from "react-native"
 var {width,height} = Dimensions.get("window")
-import {Notifications} from "expo"
+
 export default class Options extends React.Component{
   constructor(props){
     super(props)
     this.state = {modalVisible:false}
   }
-  componentDidMount(){
-    this._notificationSubscription = Notifications.addListener(this._handleNotification);
-   }
-   _handleNotification = (notification)=>{
-      if(notification.data.attendance){
-        this.getAttendance()
-      }
-      else{ 
-        Alert.alert(
-          notification.data.title,
-          notification.data.body
-          ,
-          [
-            {text:notification.data.open,onPress: ()=>Linking.openURL(notification.data.url)},
-          ],
-          {cancelable: false},
-        );
-      }
-    }
+  // componentDidMount(){
+  //   this._notificationSubscription = Notifications.addListener(this._handleNotification);
+  //  }
+ 
+  //  _handleNotification = (notification)=>{
+  //     if(notification.data.attendance){
+  //       this.getAttendance()
+  //     }
+  //     else if(notification.data.url){ 
+  //       Alert.alert(
+  //         notification.data.title,
+  //         notification.data.body
+  //         ,
+  //         [
+  //           {text:notification.data.open,onPress: ()=>Linking.openURL(notification.data.url)},
+  //         ],
+  //         {cancelable: false},
+  //       );
+  //     }
+  //     else{
+  //       return null;
+  //     }
+  //   }
   getAttendance = async()=>{
 var Username = await AsyncStorage.getItem("Username")
 var Password  = await AsyncStorage.getItem("Password")
@@ -68,18 +72,25 @@ var Password  = await AsyncStorage.getItem("Password")
         
           </Modal>
               <View style={styles.menuBox}>
+              <TouchableHighlight onPress={()=>this.props.navigation.navigate("TimeTable")}>
                 <Image style={styles.icon} source={require("../assets/tt.png")}/>
-            
+            </TouchableHighlight>
               </View>
 
               <View style={styles.menuBox}>
+              <TouchableHighlight onPress={()=>this.props.navigation.navigate("LabManuals")}>
                 <Image style={styles.icon} source={require("../assets/lab.png")}/>
-               
+               </TouchableHighlight>
               </View>
 
               <View style={styles.menuBox}>
-                <Image style={styles.icon} source={{uri: 'https://png.icons8.com/shopping-cart/color/50/ffffff'}}/>
-                <Text style={styles.info}>Icon</Text>
+                <TouchableHighlight onPress={()=>this.props.navigation.navigate("Result")}>
+                  <View>
+                <Image style={styles.icon} source={{uri: 'http://ceowestbengal.nic.in/images/Result3.jpg'}}/>
+                
+                </View>
+                </TouchableHighlight>
+                
               </View>
    
       

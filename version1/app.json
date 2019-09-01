@@ -3,12 +3,12 @@
     "name": "LNCT Attendance",
     "slug": "app",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
+    "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
       "android"
     ],
-    "version": "1.0.2",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -31,7 +31,7 @@
     },
     "android": {
       "package": "com.tushar.lnctattendance",
-      "versionCode":2,
+      "versionCode":1,
       "permissions":[]
     },
     "description": "app by tushar",

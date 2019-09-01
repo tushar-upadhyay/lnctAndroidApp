@@ -1,5 +1,5 @@
 import React from "react"
-import {View,Text,AsyncStorage,ActivityIndicator,SafeAreaView,ScrollView,Image,TouchableHighlight,Dimensions} from "react-native"
+import {View,Text,AsyncStorage,ActivityIndicator,Alert,Linking} from "react-native"
 import {createAppContainer,createSwitchNavigator,createStackNavigator,createDrawerNavigator,DrawerItems,createMaterialTopTabNavigator} from "react-navigation"
 import {AntDesign} from "@expo/vector-icons"
 import LoginScreen from "./loginScreen"
@@ -17,16 +17,29 @@ class LoadingScreen extends React.Component{
     super(props)
     this.getDatafromStorage()
   }
-
 getDatafromStorage = async()=>{
   const name = await AsyncStorage.getItem("Name")
   const ImageUrl  = await AsyncStorage.getItem("ImageUrl")
   
   if(name){
-    this.props.navigation.navigate("Other",{
-      Name:name,
-      ImageUrl:ImageUrl
-    }) 
+    {Alert.alert('Update Application','Please Update from google play\nThis Version is no longer supported\nWe have reduced application size in this update\nif update option is not showing in play store then please reinstall it',[
+      {text:'Open Play Store',onPress:()=>{
+        Linking.openURL('https://play.google.com/store/apps/details?id=com.tushar.lnctattendance')
+        this.props.navigation.navigate("Other",{
+          Name:name,
+          ImageUrl:ImageUrl
+        }) 
+    }},
+      {text:'Update Later',onPress:()=>{
+        this.props.navigation.navigate("Other",{
+          Name:name,
+          ImageUrl:ImageUrl
+        }) 
+      }}
+    ],
+    {cancelable:false}
+    )}
+    
   }
  else{
    this.props.navigation.navigate("Auth")

@@ -51,7 +51,7 @@ render(){
                 <Text style={{fontSize:17,fontWeight:'bold'}}>RGPV Results</Text>
                 </View>
             <View style={{backgroundColor:'#66e1dc',height:550}} >
-                <Text style={{alignSelf:'center',fontWeight:'bold',fontsize:15,marginHorizontal:10}}>This feature is in development! But promise you this will be fully functional till next result where in one click you will find result of whole class</Text>
+                <Text style={{alignSelf:'center',fontWeight:'bold',fontsize:15,marginHorizontal:10}}>This feature is in development! </Text>
                 <View style={{marginTop:60,backgroundColor:'white',borderRadius:15,width:'80%',alignSelf:'center'}}>
             <Text style={{marginTop:5,fontWeight:'bold',fontSize:15,alignSelf:'center'}}>Get RGPV Results without Captcha!</Text>
             <View style={{alignItems:'center',height:50,paddingHorizontal:20}}>

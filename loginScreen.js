@@ -61,9 +61,11 @@ export default class LoginScreen extends React.Component {
   submit = ()=>{
     
     if(this.state.Username&&this.state.Password){
+      var Password =this.state.Password
       this.setState({modalVisible:true})
-      this.state.Password = encodeURIComponent(this.state.Password)
-    var url = `https://forlnct.herokuapp.com/login?username=${this.state.Username}&password=${this.state.Password}&token=${token}`
+      this.state.Password = encodeURIComponent(Password)
+      console.log(this.state.Password)
+    var url = `https://newlnct.herokuapp.com/login?username=${this.state.Username}&password=${this.state.Password}&token=${token}`
     fetch(url)
     .then(res=>res.json())
     .then(res=>{

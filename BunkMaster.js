@@ -15,9 +15,9 @@ export default class BunkManager extends React.Component{
     } 
     getAttendance=async ()=>{
         try{
-        var res = await fetch(`https://forlnct.herokuapp.com/?username=${this.state.Username}&password=${this.state.Password}`)
+        var res = await fetch(`https://newlnct.herokuapp.com/?username=${this.state.Username}&password=${this.state.Password}`)
         res = await res.json()
-        var subjectWise = await (fetch(`https://forlnct.herokuapp.com/subjectwise?username=${this.state.Username}&password=${this.state.Password}`))
+        var subjectWise = await (fetch(`https://newlnct.herokuapp.com/subjectwise?username=${this.state.Username}&password=${this.state.Password}`))
         subjectWise = await subjectWise.json()
        this.setState({Percentage:res.Percentage,clicked:null,Present:res['Present '],Total:res['Total Lectures'],subjectWise:subjectWise})
     }

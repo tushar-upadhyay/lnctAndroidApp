@@ -24,13 +24,15 @@ load = async()=>{
     this.setState({clicked:null})
     return 
   }
-  this.setState({Present:'Loading..',Percentage:'Loading..',Total:'Loading..'})
+  this.setState({Present:'Loading...',Percentage:'Loading..',Total:'Loading..'})
 try{
-var res = await fetch(`https://forlnct.herokuapp.com/?username=${this.state.Username}&password=${this.state.Password}`)
+var res = await fetch(`https://newlnct.herokuapp.com/?username=${this.state.Username}&password=${this.state.Password}`)
 res = await res.json()
 this.setState({buttonTxt:'Clear',clicked:null,Present:res['Present '],Total:res['Total Lectures'],Percentage:res['Percentage'],LecturesNeeded:res['LecturesNeeded'],DaysNeeded:res['DaysNeeded']})
 }
 catch(err){
+  console.log(this.state.Password)
+
   this.setState({clicked:null,Present:'Error',Total:'Error',Percentage:'Error'})
 }
   }
@@ -50,7 +52,7 @@ subjectwise = async()=>{
   this.setState({Loading:'Loading ..'})
   try{
 
-var res = await fetch(`https://forlnct.herokuapp.com/subjectwise?username=${this.state.Username}&password=${this.state.Password}`)
+var res = await fetch(`https://newlnct.herokuapp.com/subjectwise?username=${this.state.Username}&password=${this.state.Password}`)
 res = await res.json()
 this.setState({data:res,Loading:null,buttonText:'Clear'})
 }
@@ -81,14 +83,15 @@ show75 = ()=>{
 loadDateWise =  async()=>{
   try{
     this.setState({dateWiseError:'Loading...',disabled:true})
-    var res = await fetch(`https://forlnct.herokuapp.com/dateWise?username=${this.state.Username}&password=${this.state.Password}`)
+    var res = await fetch(`https://newlnct.herokuapp.com/dateWise?username=${this.state.Username}&password=${this.state.Password}`)
     res = await  res.json()
     this.setState({dateWiseError:null,disabled:false})
     this.props.navigation.navigate('DateWise',{
       data:res
     })
   }
-  catch{
+  catch(err){
+    console.log(err)
     this.setState({dateWiseError:'Error',disabled:false})
   }
 }

@@ -10,6 +10,7 @@ export default class CustomDrawer extends React.Component{
   }
   getImageUrl = async ()=>{
     var ImageUrl  = await AsyncStorage.getItem("ImageUrl")
+    var Username = await AsyncStorage.getItem('Username')
     var Name = await AsyncStorage.getItem("Name")
     var Branch  = await AsyncStorage.getItem("Branch")
     var College = await AsyncStorage.getItem("College")
@@ -20,7 +21,8 @@ export default class CustomDrawer extends React.Component{
     Branch:Branch,
     College:College,
     Semester:Semester,
-    Section:Section
+    Section:Section,
+    Username:Username
     }) 
     
   }
@@ -46,7 +48,8 @@ onPress = {()=>this.props.navigation.navigate("Profile",{
   Branch:this.state.Branch,
   Semester:this.state.Semester,
   ImageUrl:this.state.ImageUrl,
-  Section:this.state.Section
+  Section:this.state.Section,
+  Username:this.state.Username
 })}
  style={{borderRadius:20,borderWidth:1,borderColor:"red",backgroundColor:'#00b5ec',height:30,width:100,alignSelf:'center',justifyContent:'center'}}>
   <Text style={{alignSelf:'center',fontWeight:'bold'}}>
